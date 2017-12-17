@@ -1,0 +1,31 @@
+%br
+%button.button
+  By Match
+%span
+  |
+%button.secondbutton
+  By Distance
+%table.center.sortedmatch
+%table.center.sortedistance
+  
+
+%br
+%br
+%br
+%br
+
+:javascript
+    $(".secondbutton").on("click", function() {
+      $(".button").removeClass('clicked');
+      $(".secondbutton").addClass('clicked');
+      $(".sortedmatch").html("#{}");
+      $('.sortedistance').html("#{j render 'users/distance'}");
+    });
+
+    $(".button").on("click", function() {
+      $(".secondbutton").removeClass('clicked');
+      $(".button").addClass('clicked');
+      $(".sortedistance").html("#{}");
+      $('.sortedmatch').html("#{j render 'users/matches'}");
+    });
+    

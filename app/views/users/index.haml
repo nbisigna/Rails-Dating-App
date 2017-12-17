@@ -1,0 +1,8 @@
+%table.center
+  %tr
+  -@users.each do |u|
+    %td
+      =link_to user_path(u), {class: 'clickable'} do
+        =u.name
+        %br
+        =image_tag(u.image1(:thumb), class: 'show-image')

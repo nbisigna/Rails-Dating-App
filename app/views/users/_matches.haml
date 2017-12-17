@@ -1,0 +1,16 @@
+%tr
+  -@users.first(33).sort{|a, b| b.match <=> a.match}.each do |u|
+    -if current_user.id != u.id
+      %td
+        =link_to user_path(u), class: 'clickable' do
+          %br
+          =u.name
+          %br
+          =image_tag(u.image1(:thumb), class: 'show-image')
+          %br
+          %div
+            =u.match
+            \%
+          %div
+            =u.distance
+            \miles

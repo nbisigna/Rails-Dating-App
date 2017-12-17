@@ -1,0 +1,323 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <table>
+    <tr>
+
+<td>
+  <div id="picTarget" class='show-image'>
+  <% if @user.image1.exists? %>
+  <%= image_tag(@user.image1(:thumb), class: 'show-image') %>
+  <%end%>
+</div>
+
+<div class="field">
+  <%= f.label 'picture' %><br>
+  <%= f.file_field :image1, :type => "file", :id => "picture"  %>
+</div>
+</td>
+
+<td>
+<div id="picTarget2" class='show-image'>
+  <% if @user.image2.exists? %>
+  <%= image_tag(@user.image2(:thumb), class: 'show-image') %>
+  <%end%>
+</div>
+
+<div class="field">
+  <%= f.label 'picture2' %><br>
+  <%= f.file_field :image2, :type => "file", :id => "picture2"  %>
+</div>
+</td>
+  
+<td>
+<div id="picTarget3" class='show-image'>
+  <% if @user.image3.exists? %>
+  <%= image_tag(@user.image3(:thumb), class: 'show-image') %>
+  <%end%>
+</div>
+
+<div class="field">
+  <%= f.label 'picture3' %><br>
+  <%= f.file_field :image3, :type => "file", :id => "picture3"  %>
+</div>
+</td>
+
+<td>
+<div id="picTarget4" class='show-image'>
+  <% if @user.image4.exists? %>
+  <%= image_tag(@user.image4(:thumb), class: 'show-image') %>
+  <%end%>
+</div>
+
+<div class="field">
+  <%= f.label 'picture4' %><br>
+  <%= f.file_field :image4, :type => "file", :id => "picture4"  %>
+</div>
+</td>
+
+<td>
+<div id="picTarget5" class='show-image'>
+  <% if @user.image5.exists? %>
+  <%= image_tag(@user.image5(:thumb), class: 'show-image') %>
+  <%end%>
+</div>
+
+<div class="field">
+  <%= f.label 'picture5' %><br>
+  <%= f.file_field :image5, :type => "file", :id => "picture5"  %>
+</div>
+</td>
+
+<td>
+<div id="picTarget6" class='show-image'>
+  <% if @user.image6.exists? %>
+  <%= image_tag(@user.image6(:thumb), class: 'show-image') %>
+  <%end%>
+</div>
+
+<div class="field">
+  <%= f.label 'picture6' %><br>
+  <%= f.file_field :image6, :type => "file", :id => "picture6"  %>
+</div>
+</td>
+
+
+</tr>
+</table>
+
+<br>
+
+<div class="field">
+  <%= f.label :name %>:<br>
+  <%= f.text_field :name, maxlength: 21 %>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :age %>:<br>
+  <%= f.text_field :age, maxlength: 3 %>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :address %>:<br>
+  <%= f.text_field :address, :type => 'input', id: 'address' %>
+  </div>
+  <%= f.hidden_field :lat, :id => 'latitude' %>
+  <%= f.hidden_field :lng, :id => 'longitude' %>
+  
+
+
+<br>
+
+<div class="field">
+  <%= f.label :description %>:<br>
+  <%= f.text_area :description, rows: 5, cols: 60, maxlength: 2500 %>
+</div>
+
+<br>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <br>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <br>
+
+<h3>Change Password</h3>
+
+  <div class="field">
+    <%= f.label :password %><br> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <br>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <br>
+
+  <!--<div class="field">-->
+  <!--  <%#= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />-->
+  <!--  <%#= f.password_field :current_password, autocomplete: "off" %>-->
+  <!--</div>-->
+
+  <br>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<br>
+
+<%= link_to "Back", :back %>
+
+
+<br><br><br><br><br><br>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/dist/typeahead.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead-addresspicker/0.1.4/typeahead-addresspicker.min.js"></script>
+
+<script>
+
+var addressPicker = new AddressPicker();
+
+$('#address').typeahead(null, {
+  displayKey: 'description',
+  source: addressPicker.ttAdapter()
+});
+
+addressPicker.bindDefaultTypeaheadEvent($('#address'))
+
+$(addressPicker).on('addresspicker:selected', function (event, result) {
+  $('#latitude').val(result.lat());
+  $('#longitude').val(result.lng());
+  $('#your_city_input').val(result.nameForType('locality'));
+});
+
+    $(function() {
+  $('#picture').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.style.borderRadius = '100%';
+      img.style.width = '100px';
+      img.style.height = '100px';
+      img.src = file.target.result;
+      $('#picTarget').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+});
+
+    $(function() {
+  $('#picture2').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.style.borderRadius = '100%';
+      img.style.width = '100px';
+      img.style.height = '100px';
+      img.src = file.target.result;
+      $('#picTarget2').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+});
+
+    $(function() {
+  $('#picture3').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.style.borderRadius = '100%';
+      img.style.width = '100px';
+      img.style.height = '100px';
+      img.src = file.target.result;
+      $('#picTarget3').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+});
+
+    $(function() {
+  $('#picture4').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.style.borderRadius = '100%';
+      img.style.width = '100px';
+      img.style.height = '100px';
+      img.src = file.target.result;
+      $('#picTarget4').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+});
+
+    $(function() {
+  $('#picture5').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.style.borderRadius = '100%';
+      img.style.width = '100px';
+      img.style.height = '100px';
+      img.src = file.target.result;
+      $('#picTarget5').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+});
+
+    $(function() {
+  $('#picture6').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.style.borderRadius = '100%';
+      img.style.width = '100px';
+      img.style.height = '100px';
+      
+      img.src = file.target.result;
+      $('#picTarget6').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+});
+</script>

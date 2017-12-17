@@ -1,0 +1,120 @@
+%h1 Answer these questions the best you can to help find your match!
+%h3 (Be Yourself! No one else will see your answers.)
+
+= form_for(@user, url: update_questions_path(@user), html: { method: :put }) do |f|
+  .field
+    %h3= f.label :question1 
+    %h4 If you could have dinner anyone (dead or alive) who would you invite?
+    =f.text_area :question1, rows: 4, cols: 60, maxLength: 2500
+  
+  .field
+    %h3= f.label :question2 
+    %h4 What is your dream job(s)?
+    =f.text_area :question2, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question3 
+    %h4 If you had a billion dollars, what would you spend it on?
+    =f.text_area :question3, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question4 
+    %h4 What are some of your favorite genres of music and artists?
+    =f.text_area :question4, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question5 
+    %h4 If you could have a superpower(s) what would it/they be?
+    =f.text_area :question5, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question6 
+    %h4 What are some of your favorite childhood TV shows?
+    =f.text_area :question6, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question7 
+    %h4 What places would you like to travel to? What are your favorite places you've visited?
+    =f.text_area :question7, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question8 
+    %h4 What is your biggest goal at this point in your life?
+    =f.text_area :question8, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question9 
+    %h4 What are your favorite animals?
+    =f.text_area :question9, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question10 
+    %h4 What do you do to stay in shape?
+    =f.text_area :question10, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question11 
+    %h4 What is your typical Friday night like?
+    =f.text_area :question11, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question12 
+    %h4 How do you like to spend Saturday mornings?
+    =f.text_area :question12, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question13 
+    %h4 What is your typical weekday like?
+    =f.text_area :question13, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question14 
+    %h4 Who are the most important people in your life?
+    =f.text_area :question14, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question15 
+    %h4 What are your favorite meals to eat?
+    =f.text_area :question15, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question16 
+    %h4 What are some of your romantic fantasies?
+    =f.text_area :question16, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question17 
+    %h4 If you had a genie grant you three wishes, what would they be?
+    =f.text_area :question17, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question18 
+    %h4 What are the major life experiences that have shaped who you are?
+    =f.text_area :question18, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question2 
+    %h4 What changes would you like to see in the world today?
+    =f.text_area :question19, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question20 
+    %h4 What qualities do you believe make a successful person?
+    =f.text_area :question20, rows: 4, cols: 60, maxLength: 2500
+
+  .field
+    %h3= f.label :question21 
+    %h4 What is your favorite quote(s) to live by?
+    =f.text_area :question21, rows: 4, cols: 60, maxLength: 2500
+    
+  %br
+  %br
+
+  .actions
+    =f.submit 'Answer'
+
+  %br
+  %br 
+  %br 
+  %br 
+  %br 
